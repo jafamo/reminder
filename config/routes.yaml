@@ -8,3 +8,13 @@ api_prueba:
     path: /api/prueba
     controller: App\Infrastructure\Controller\PruebaController::index
     methods: GET
+
+swagger_ui:
+    path: /api/doc
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger_ui }
+
+swagger_json:
+    path: /api/doc.json
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger }
