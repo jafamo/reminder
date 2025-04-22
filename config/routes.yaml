@@ -1,5 +1,10 @@
 controllers:
     resource:
-        path: ../src/Controller/
-        namespace: App\Controller
+        path: ../src/Infrastructure/Controller/
+        namespace: App\Infrastructure\Controller
     type: attribute
+
+api_prueba:
+    path: /api/prueba
+    controller: App\Infrastructure\Controller\PruebaController::index
+    methods: GET
