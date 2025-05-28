@@ -19,7 +19,7 @@ jobs:
           echo "Done!"
 
       - name: Install dependencies
-        run: composer install --ignore-platform-req
+        run: composer install --ignore-platform-reqs
 
       - name: Run the tests
         run: composer phpunit
