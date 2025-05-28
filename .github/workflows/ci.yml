@@ -3,7 +3,12 @@ on: [ push, pull_request ]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        php-versions: ['8.2', '8.3', '8.4']
+    name: ${{ matrix.os }} PHP ${{ matrix.php-versions }}
 
     steps:
       - uses: actions/checkout@v2
@@ -17,6 +22,12 @@ jobs:
         run: |
           echo "Job Context: $JOB_CONTEXT"
           echo "Done!"
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          coverage: none
 
       - name: Install dependencies
         run: composer install --ignore-platform-reqs
