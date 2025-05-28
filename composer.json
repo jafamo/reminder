@@ -51,6 +51,13 @@
         "symfony/polyfill-php82": "*"
     },
     "scripts": {
+        "style": "phpcs -p --standard=PSR2 src tests",
+        "fix-style": "phpcbf -p --standard=PSR2 src tests",
+        "phpunit": "phpunit --configuration phpunit.xml",
+        "test": [
+            "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+            "phpunit --configuration phpunit.xml"
+        ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
@@ -67,12 +74,15 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": false,
+            "allow-contrib": true,
             "require": "7.2.*"
         }
     },
     "require-dev": {
+        "behat/behat": "^3.22",
+        "jakub-onderka/php-console-highlighter": "^0.4.0",
         "phpunit/phpunit": "^9.5",
+        "squizlabs/php_codesniffer": "*",
         "symfony/browser-kit": "7.2.*",
         "symfony/css-selector": "7.2.*",
         "symfony/debug-bundle": "7.2.*",
